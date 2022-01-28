@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../Widgets/product_grid.dart';
 import '../Models/Providers/cart.dart';
 import '../Models/Providers/badge.dart';
+import '../screens/cart.screen.dart';
 
 enum FilterOptions {
   Favorites,
@@ -37,8 +38,7 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
             ),
             itemBuilder: (_) => [
               PopupMenuItem(
-                  child: Text('Only Favorites'),
-                  value: FilterOptions.Favorites),
+                  child: Text('Only Favorites'), value: FilterOptions.Favorites),
               PopupMenuItem(child: Text('Show All'), value: FilterOptions.All),
             ],
           ),
@@ -51,7 +51,9 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
               icon: Icon(
                 Icons.shopping_cart,
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed(CartScreen.routeName);
+              },
             ),
           ),
         ],
